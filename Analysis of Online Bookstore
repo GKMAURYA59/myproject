@@ -1,0 +1,40 @@
+-- Question 1: Retrieve the details of all customers.
+
+SELECT * FROM customers;
+
+-- Question 2: Retrieve the titles and authors of all books.
+
+SELECT title , author FROM books;
+
+-- Question 3: Retrieve the total number of books sold.
+
+SELECT SUM(quantity) AS books_sold FROM orders;
+
+-- Question 4: Retrieve the customers who have placed orders.
+
+SELECT * FROM orders;
+
+-- Question 5: Retrieve the total revenue generated from book sales.
+
+SELECT SUM(orders.quantity * books.price) AS total_revenue
+FROM orders
+JOIN books ON orders.book_id = books.book_id;
+
+-- Question 6: Retrieve the customer who has made the highest payment.
+
+SELECT customers.name, customers.customer_id FROM customers JOIN orders on customers.customer_id =orders.customer_id JOIN payments on orders.order_id= payments.order_id ;
+
+-- Question 7: Retrieve the book with the highest price.
+
+SELECT * FROM books WHERE price = (SELECT MAX(price) FROM books);
+
+-- Question 8: Retrieve the number of books sold for each customer.
+SELECT SUM(quantity) FROM orders;
+
+-- Question 9: Retrieve the customer who has made the most orders.
+
+SELECT customers.name,max(quantity)as most_order from customers JOIN orders on customers.customer_id=orders.order_id GROUP BY customers.name ORDER BY most_order DESC LIMIT 1;
+
+-- Question 10: Retrieve the customers who have not placed any orders.
+
+SELECT customers.customer_id, customers.name FROM customers	JOIN orders on customers.customer_id=orders.customer_id where orders.order_id is NULL;
