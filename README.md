@@ -1,3 +1,3 @@
 # myproject
-I am uploading this simple project for begineers named as ONLINE BOOK STORE
+I am uploading this simple project for beginners named as ONLINE BOOK STORE
 
